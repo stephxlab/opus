@@ -85,9 +85,7 @@ func TestCodecFloat32(t *testing.T) {
 	if err != nil || dec == nil {
 		t.Fatalf("Error creating new decoder: %v", err)
 	}
-	// TODO: Uh-oh.. it looks like I forgot to put a data = data[:n] here, yet
-	// the test is not failing. Why?
-	n, err = dec.DecodeFloat32(data, pcm)
+	n, err = dec.DecodeFloat32(data[:n], pcm)
 	if err != nil {
 		t.Fatalf("Couldn't decode data: %v", err)
 	}
